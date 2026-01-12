@@ -697,6 +697,7 @@ public class CaiMoGuH5Help {
             if (selectKey.contains(key)) {
                 String temp = params.get(key);
                 if (!key.equals("time") && !key.equals("sign")) {
+
                     temp = vrEncrypt(params.get(key), timeStr);
                 }
                 urlBuild.append(key).append("=").append(temp);
@@ -752,6 +753,9 @@ public class CaiMoGuH5Help {
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
             byte[] encryptBytes = cipher.doFinal(val.getBytes(StandardCharsets.UTF_8));
             String aesBase64 = Base64.encodeBase64String(encryptBytes);
+            if (aesBase64.startsWith("+")){
+                aesBase64=aesBase64.replace("+", "%2B");
+            }
             return URLEncoder.encode(aesBase64, StandardCharsets.UTF_8.name());
 
         } catch (Exception ex) {

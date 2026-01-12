@@ -34,6 +34,9 @@
   - 严格检查可获取影响力频道
   - 重试机制
 
+- 2026-01-12
+  - 签名错误问题首字母+自动被转换为空格问题
+
 ## 踩蘑菇接口(以下是该项目用到的所有接口和html)
 
 - https://www.caimogu.cc/game/find.html?act=fetch&date=2024-07&sort=1&sort_desc=1&page=1
