@@ -107,13 +107,13 @@ public class App {
         if (!acGameIds.isEmpty()) {
             gameIds.removeAll(acGameIds);
         }
-        if (!gameIds.isEmpty()) {
+/*        if (!gameIds.isEmpty()) {
             int trueFlag = 0;
             for (String gamId : gameIds) {
                 if (trueFlag >= userInfo.getMaxGame()) {
                     break;
                 }
-                int code = CaiMoGuH5Help.acGameScore(gamId, "神中神非常好玩-"+"通关时间:"+idempotentTime+"死亡次数:"+userInfo.getUid(), "10", "1");
+                int code = CaiMoGuH5Help.acGameScore(gamId, "为什么不给老子-"+"通关时间:"+idempotentTime+"死亡次数:"+userInfo.getUid(), "10", "1");
                 if (code == 99999) {
                     acGameIds.add(gamId);
                     log.error("重复评价 " + gamId);
@@ -124,13 +124,13 @@ public class App {
                 } else if (code ==887) {
                     log.error("评论异常");
                 } else {
-                    log.error("无法正常评论游戏");
+                    log.error("无法正常评论游戏{}",code);
                     break;
                 }
 
             }
             log.error("成功评价游戏数量:{}", trueFlag);
-        }
+        }*/
         int tempPoint = userInfo.getPoint().intValue();
         log.error("影响力获取:{}",CaiMoGuH5Help.getPoint()-tempPoint);
         String acGameIdsStr = String.join("\n", acGameIds);
@@ -146,7 +146,7 @@ public class App {
         Set<String> gameCommentIds = checkAcFileName(gameCommentFileName, replyGroup, "3");
 
         int gameCommentNum = 0;
-        for (String gameId : gameIds) {
+/*        for (String gameId : gameIds) {
             if (gameCommentIds.contains(gameId)) {
                 continue;
             }
@@ -161,8 +161,7 @@ public class App {
                 log.error("影响力获取:{}",CaiMoGuH5Help.getPoint()-tempPoint);
                 gameCommentNum++;
             }
-
-        }
+        }*/
         GithubHelp.createOrUpdateFile(String.join("\n", gameCommentIds), gameCommentFileName, ownerRepo, githubApiToken);
 
 
